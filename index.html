@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Christmas World</title>
+<title>Christmas for Shrija</title>
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Pacifico&display=swap');
@@ -12,55 +12,16 @@
 
 body{
   height:100vh;
-  overflow:hidden;
   background: radial-gradient(circle at top, #16213e, #05060a);
+  overflow:hidden;
   font-family:'Poppins',sans-serif;
   color:white;
-}
-
-/* stars */
-.star{
-  position:fixed;
-  width:2px;
-  height:2px;
-  background:white;
-  opacity:0.7;
-  animation:twinkle 3s infinite alternate;
-}
-@keyframes twinkle{
-  from{opacity:0.2;}
-  to{opacity:1;}
-}
-
-/* snow */
-.snow{
-  position:fixed;
-  top:-10px;
-  font-size:18px;
-  animation:fall linear infinite;
-}
-@keyframes fall{
-  to{transform:translateY(110vh);}
-}
-
-/* cute floating */
-.cute{
-  position:fixed;
-  bottom:-40px;
-  animation:floatUp linear infinite;
-}
-@keyframes floatUp{
-  to{
-    transform:translateY(-130vh) rotate(360deg);
-    opacity:0;
-  }
 }
 
 /* pages */
 .page{
   position:absolute;
-  width:100%;
-  height:100vh;
+  inset:0;
   display:none;
   justify-content:center;
   align-items:center;
@@ -70,69 +31,82 @@ body{
 
 .page.active{
   display:flex;
-  animation:fadeIn 1.3s ease;
+  animation:fade 1.2s ease;
 }
-@keyframes fadeIn{
+
+@keyframes fade{
   from{opacity:0;transform:scale(0.95);}
   to{opacity:1;transform:scale(1);}
 }
 
 .card{
-  background:rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.12);
   backdrop-filter:blur(16px);
   padding:40px;
-  border-radius:30px;
-  max-width:430px;
-  box-shadow:0 0 60px rgba(255,150,200,0.4);
+  border-radius:28px;
+  max-width:420px;
+  box-shadow:0 0 60px rgba(255,140,200,0.6);
 }
 
 h1{
   font-family:'Pacifico',cursive;
-  font-size:46px;
-  margin-bottom:20px;
+  font-size:44px;
   color:#ffd6f6;
   text-shadow:0 0 25px rgba(255,150,220,0.9);
+  margin-bottom:18px;
 }
 
 p{
   font-size:16px;
   line-height:1.9;
-  opacity:0.95;
 }
 
 button{
-  margin-top:30px;
-  padding:14px 34px;
+  margin-top:28px;
+  padding:14px 36px;
   border:none;
-  border-radius:35px;
+  border-radius:40px;
   background:linear-gradient(135deg,#ff7ac8,#ff9edb);
   color:white;
   font-size:15px;
   box-shadow:0 0 30px rgba(255,150,220,0.9);
   cursor:pointer;
 }
-button:hover{transform:scale(1.08);}
 
-.heartbeat{
-  animation:pulse 1.5s infinite;
+button:active{transform:scale(0.96);}
+
+/* snow */
+.snow{
+  position:fixed;
+  top:-10px;
+  font-size:18px;
+  animation:fall linear infinite;
 }
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.1);}
-  100%{transform:scale(1);}
+
+@keyframes fall{
+  to{transform:translateY(110vh);}
+}
+
+/* floating */
+.float{
+  position:fixed;
+  bottom:-40px;
+  animation:rise linear infinite;
+}
+
+@keyframes rise{
+  to{
+    transform:translateY(-130vh) rotate(360deg);
+    opacity:0;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔊 HIDDEN YOUTUBE MUSIC -->
-<iframe
-id="ytMusic"
-src="https://www.youtube.com/embed/wt0haVnorBo?enablejsapi=1&loop=1&playlist=wt0haVnorBo"
-allow="autoplay"
-style="width:0;height:0;border:0;visibility:hidden;">
-</iframe>
+<!-- YOUTUBE PLAYER -->
+<div id="player" style="width:0;height:0;overflow:hidden;"></div>
 
 <!-- PAGE 1 -->
 <div class="page active">
@@ -140,10 +114,9 @@ style="width:0;height:0;border:0;visibility:hidden;">
     <h1>Hi Shrija ✨</h1>
     <p>
       This is a small Christmas world.<br>
-      Cute. Soft. Special.<br><br>
-      Made with care.
+      Cute, calm and special.
     </p>
-    <button onclick="startExperience()">Enter 🎄</button>
+    <button onclick="start()">Enter 🎄</button>
   </div>
 </div>
 
@@ -152,8 +125,8 @@ style="width:0;height:0;border:0;visibility:hidden;">
   <div class="card">
     <p>
       Snow keeps falling.<br>
-      Stars keep glowing.<br><br>
-      Some moments just feel nice.
+      Lights keep glowing.<br><br>
+      Some moments feel warm.
     </p>
     <button onclick="next()">Next ✨</button>
   </div>
@@ -163,10 +136,9 @@ style="width:0;height:0;border:0;visibility:hidden;">
 <div class="page">
   <div class="card">
     <p>
-      Talking to you feels simple.<br><br>
-      Calm.<br>
-      Easy.<br>
-      Natural.
+      Talking to you feels easy.<br><br>
+      No rush.<br>
+      No pressure.
     </p>
     <button onclick="next()">Continue 💫</button>
   </div>
@@ -175,85 +147,75 @@ style="width:0;height:0;border:0;visibility:hidden;">
 <!-- PAGE 4 -->
 <div class="page">
   <div class="card">
+    <h1>Merry Christmas 🎄</h1>
     <p>
-      Nothing dramatic.<br><br>
-      Just a gentle thought,<br>
-      placed here,<br>
-      on Christmas.
+      I hope this made you smile.
     </p>
-    <button onclick="next()">Almost 🎁</button>
   </div>
 </div>
 
-<!-- PAGE 5 -->
-<div class="page">
-  <div class="card">
-    <h1 class="heartbeat">Merry Christmas 🎄</h1>
-    <p>
-      I hope this made you smile.<br><br>
-      Even a little.
-    </p>
-  </div>
-</div>
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
-let index=0;
-const pages=document.querySelectorAll(".page");
+let page = 0;
+const pages = document.querySelectorAll('.page');
+let player;
 
-function next(){
-  pages[index].classList.remove("active");
-  index++;
-  if(index<pages.length) pages[index].classList.add("active");
+/* YouTube API */
+function onYouTubeIframeAPIReady(){
+  player = new YT.Player('player',{
+    height:'0',
+    width:'0',
+    videoId:'wt0haVnorBo',
+    playerVars:{
+      playsinline:1,
+      loop:1,
+      playlist:'wt0haVnorBo'
+    }
+  });
 }
 
-/* MUSIC */
-function playMusic(){
-  const iframe = document.getElementById("ytMusic");
-  iframe.contentWindow.postMessage(
-    '{"event":"command","func":"playVideo","args":""}',
-    "*"
-  );
-}
-
-function startExperience(){
-  playMusic();
+function start(){
+  if(player){
+    player.unMute();
+    player.setVolume(40);
+    player.playVideo();
+  }
   next();
 }
 
-/* stars */
-for(let i=0;i<70;i++){
-  const s=document.createElement("div");
-  s.className="star";
-  s.style.left=Math.random()*100+"vw";
-  s.style.top=Math.random()*100+"vh";
-  s.style.animationDelay=Math.random()*3+"s";
-  document.body.appendChild(s);
+function next(){
+  pages[page].classList.remove('active');
+  page++;
+  if(page < pages.length){
+    pages[page].classList.add('active');
+  }
 }
 
 /* snow */
 setInterval(()=>{
-  const sn=document.createElement("div");
-  sn.className="snow";
-  sn.innerHTML="❄️";
-  sn.style.left=Math.random()*100+"vw";
-  sn.style.animationDuration=Math.random()*4+4+"s";
-  document.body.appendChild(sn);
-  setTimeout(()=>sn.remove(),8000);
-},180);
+  const s=document.createElement('div');
+  s.className='snow';
+  s.innerHTML='❄️';
+  s.style.left=Math.random()*100+'vw';
+  s.style.animationDuration=Math.random()*4+4+'s';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),8000);
+},200);
 
-/* cute floating items */
-const cuteThings=["💗","🎄","✨","🧸","🎁","🌸","💫"];
+/* floating cute */
+const icons=['💗','✨','🎄','🧸','🎁'];
 setInterval(()=>{
-  const c=document.createElement("div");
-  c.className="cute";
-  c.innerHTML=cuteThings[Math.floor(Math.random()*cuteThings.length)];
-  c.style.left=Math.random()*100+"vw";
-  c.style.fontSize=Math.random()*12+22+"px";
-  c.style.animationDuration=Math.random()*6+6+"s";
-  document.body.appendChild(c);
-  setTimeout(()=>c.remove(),9000);
-},400);
+  const f=document.createElement('div');
+  f.className='float';
+  f.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+  f.style.left=Math.random()*100+'vw';
+  f.style.fontSize=Math.random()*12+22+'px';
+  f.style.animationDuration=Math.random()*6+6+'s';
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),9000);
+},500);
 </script>
 
 </body>
-</html>
+</html>  
