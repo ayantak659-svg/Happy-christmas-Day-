@@ -3,236 +3,237 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Small Christmas Moment</title>
+<title>A Christmas World</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Pacifico&display=swap');
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
+body{
   height:100vh;
-  background: radial-gradient(circle at top, #1b2735, #05060a);
   overflow:hidden;
-  font-family:'Poppins', sans-serif;
-  color:#fff;
+  background: radial-gradient(circle at top, #16213e, #05060a);
+  font-family:'Poppins',sans-serif;
+  color:white;
 }
 
-/* stars */
-.star {
+/* ---------- BACKGROUND ANIMATIONS ---------- */
+
+.star{
   position:fixed;
   width:2px;
   height:2px;
   background:white;
-  opacity:0.6;
-  animation: twinkle 4s infinite ease-in-out;
+  opacity:0.7;
+  animation:twinkle 3s infinite alternate;
+}
+@keyframes twinkle{
+  from{opacity:0.2;}
+  to{opacity:1;}
 }
 
-@keyframes twinkle {
-  0%,100% { opacity:0.2; }
-  50% { opacity:0.8; }
-}
-
-/* snow */
-.snow {
+.snow{
   position:fixed;
   top:-10px;
-  font-size:14px;
-  animation: fall linear infinite;
-  opacity:0.7;
+  font-size:18px;
+  animation:fall linear infinite;
+}
+@keyframes fall{
+  to{transform:translateY(110vh);}
 }
 
-@keyframes fall {
-  to { transform: translateY(110vh); }
-}
-
-/* floating icons */
-.float {
+.cute{
   position:fixed;
-  bottom:-20px;
-  animation: rise linear infinite;
-  opacity:0.9;
+  bottom:-40px;
+  animation:floatUp linear infinite;
 }
-
-@keyframes rise {
-  to {
-    transform: translateY(-120vh) rotate(360deg);
+@keyframes floatUp{
+  to{
+    transform:translateY(-130vh) rotate(360deg);
     opacity:0;
   }
 }
 
-/* pages */
-section {
+/* ---------- PAGES ---------- */
+
+.page{
   position:absolute;
   width:100%;
   height:100vh;
   display:none;
   justify-content:center;
   align-items:center;
-  padding:25px;
   text-align:center;
+  padding:25px;
 }
 
-section.active {
+.page.active{
   display:flex;
-  animation: fade 1.2s ease;
+  animation:fadeIn 1.3s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(0.95);}
+  to{opacity:1;transform:scale(1);}
 }
 
-@keyframes fade {
-  from { opacity:0; transform: translateY(20px); }
-  to { opacity:1; transform: translateY(0); }
+.card{
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(16px);
+  padding:40px;
+  border-radius:30px;
+  max-width:430px;
+  box-shadow:0 0 60px rgba(255,150,200,0.4);
 }
 
-.card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(14px);
-  padding:38px;
-  border-radius:26px;
-  max-width:420px;
-  box-shadow:0 0 45px rgba(255,255,255,0.12);
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:46px;
+  margin-bottom:20px;
+  color:#ffd6f6;
+  text-shadow:0 0 25px rgba(255,150,220,0.9);
 }
 
-h1 {
-  font-family:'Great Vibes', cursive;
-  font-size:48px;
-  color:#ffd6e8;
-  text-shadow:0 0 20px rgba(255,120,170,0.7);
-  margin-bottom:18px;
-}
-
-p {
+p{
   font-size:16px;
-  line-height:1.8;
+  line-height:1.9;
   opacity:0.95;
 }
 
-button {
-  margin-top:28px;
-  padding:12px 30px;
+button{
+  margin-top:30px;
+  padding:14px 34px;
   border:none;
-  border-radius:30px;
-  background:linear-gradient(135deg,#ff6f91,#ff8fab);
+  border-radius:35px;
+  background:linear-gradient(135deg,#ff7ac8,#ff9edb);
   color:white;
   font-size:15px;
+  box-shadow:0 0 30px rgba(255,150,220,0.9);
   cursor:pointer;
-  box-shadow:0 0 25px rgba(255,120,170,0.7);
 }
+button:hover{transform:scale(1.08);}
 
-button:hover { transform: scale(1.06); }
+/* pulse hearts */
+.heartbeat{
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.1);}
+  100%{transform:scale(1);}
+}
 </style>
 </head>
 
 <body>
 
 <!-- PAGE 1 -->
-<section class="active">
+<div class="page active">
   <div class="card">
-    <h1>Hi Shrija</h1>
+    <h1>Hi Shrija ✨</h1>
     <p>
-      This isn’t anything big.<br>
-      And it’s not meant to be.<br><br>
-      Just… a small moment,<br>
-      made with care.
+      This is not just a page.<br>
+      It’s a tiny Christmas world.<br><br>
+      Made slowly.<br>
+      With care.
     </p>
-    <button onclick="next()">Continue</button>
+    <button onclick="next()">Enter 🎄</button>
   </div>
-</section>
+</div>
 
 <!-- PAGE 2 -->
-<section>
+<div class="page">
   <div class="card">
     <p>
-      Christmas has a quiet side.<br><br>
-      Soft lights.<br>
-      Slow snow.<br>
-      Moments that don’t need noise.
+      Snow keeps falling.<br>
+      Stars keep glowing.<br><br>
+      Some moments don’t need words.<br>
+      They just feel nice.
     </p>
-    <button onclick="next()">Continue</button>
+    <button onclick="next()">Next ✨</button>
   </div>
-</section>
+</div>
 
 <!-- PAGE 3 -->
-<section>
+<div class="page">
   <div class="card">
     <p>
-      I like how talking to you<br>
-      feels natural.<br><br>
-      No pretending.<br>
+      Talking to you feels simple.<br><br>
+      No rush.<br>
       No pressure.<br>
-      Just easy.
+      Just calm.
     </p>
-    <button onclick="next()">Continue</button>
+    <button onclick="next()">Continue 💫</button>
   </div>
-</section>
+</div>
 
 <!-- PAGE 4 -->
-<section>
+<div class="page">
   <div class="card">
     <p>
-      This isn’t a promise.<br>
-      Or a statement.<br><br>
-      Just a thought,<br>
-      placed gently.
+      This isn’t something dramatic.<br><br>
+      Just a gentle thought,<br>
+      placed here,<br>
+      on Christmas.
     </p>
-    <button onclick="next()">One last thing</button>
+    <button onclick="next()">Almost there 🎁</button>
   </div>
-</section>
+</div>
 
 <!-- PAGE 5 -->
-<section>
+<div class="page">
   <div class="card">
-    <h1>Merry Christmas</h1>
+    <h1 class="heartbeat">Merry Christmas 🎄</h1>
     <p>
-      I hope this stayed with you<br>
-      for a moment longer than usual.<br><br>
-      — Shrija 🎄
+      I hope this made you smile.<br><br>
+      Even if just a little.
     </p>
   </div>
-</section>
+</div>
 
 <script>
-let i=0;
-const pages=document.querySelectorAll("section");
+let index=0;
+const pages=document.querySelectorAll(".page");
 function next(){
-  pages[i].classList.remove("active");
-  i++;
-  if(i<pages.length) pages[i].classList.add("active");
+  pages[index].classList.remove("active");
+  index++;
+  if(index<pages.length) pages[index].classList.add("active");
 }
 
 /* stars */
-for(let s=0;s<40;s++){
-  const star=document.createElement("div");
-  star.className="star";
-  star.style.left=Math.random()*100+"vw";
-  star.style.top=Math.random()*100+"vh";
-  star.style.animationDelay=Math.random()*4+"s";
-  document.body.appendChild(star);
+for(let i=0;i<60;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  s.style.animationDelay=Math.random()*3+"s";
+  document.body.appendChild(s);
 }
 
 /* snow */
 setInterval(()=>{
-  const s=document.createElement("div");
-  s.className="snow";
-  s.innerHTML="❄";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=Math.random()*4+4+"s";
-  document.body.appendChild(s);
-  setTimeout(()=>s.remove(),7000);
-},250);
+  const sn=document.createElement("div");
+  sn.className="snow";
+  sn.innerHTML="❄️";
+  sn.style.left=Math.random()*100+"vw";
+  sn.style.animationDuration=Math.random()*4+4+"s";
+  document.body.appendChild(sn);
+  setTimeout(()=>sn.remove(),8000);
+},200);
 
-/* rare cute float */
-const icons=["✨","🎁","💗"];
+/* cute floating items */
+const cuteThings=["💗","🎄","✨","🧸","🎁","🌸"];
 setInterval(()=>{
-  const f=document.createElement("div");
-  f.className="float";
-  f.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-  f.style.left=Math.random()*100+"vw";
-  f.style.fontSize=Math.random()*10+20+"px";
-  f.style.animationDuration=Math.random()*5+6+"s";
-  document.body.appendChild(f);
-  setTimeout(()=>f.remove(),8000);
-},1200);
+  const c=document.createElement("div");
+  c.className="cute";
+  c.innerHTML=cuteThings[Math.floor(Math.random()*cuteThings.length)];
+  c.style.left=Math.random()*100+"vw";
+  c.style.fontSize=Math.random()*12+22+"px";
+  c.style.animationDuration=Math.random()*6+6+"s";
+  document.body.appendChild(c);
+  setTimeout(()=>c.remove(),9000);
+},500);
 </script>
 
 </body>
-  </html> 
+</html>
