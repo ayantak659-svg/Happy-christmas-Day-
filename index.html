@@ -18,8 +18,7 @@ body{
   color:white;
 }
 
-/* ---------- BACKGROUND ANIMATIONS ---------- */
-
+/* stars */
 .star{
   position:fixed;
   width:2px;
@@ -33,6 +32,7 @@ body{
   to{opacity:1;}
 }
 
+/* snow */
 .snow{
   position:fixed;
   top:-10px;
@@ -43,6 +43,7 @@ body{
   to{transform:translateY(110vh);}
 }
 
+/* cute floating */
 .cute{
   position:fixed;
   bottom:-40px;
@@ -55,8 +56,7 @@ body{
   }
 }
 
-/* ---------- PAGES ---------- */
-
+/* pages */
 .page{
   position:absolute;
   width:100%;
@@ -113,7 +113,6 @@ button{
 }
 button:hover{transform:scale(1.08);}
 
-/* pulse hearts */
 .heartbeat{
   animation:pulse 1.5s infinite;
 }
@@ -127,17 +126,24 @@ button:hover{transform:scale(1.08);}
 
 <body>
 
+<!-- 🔊 HIDDEN YOUTUBE MUSIC -->
+<iframe
+id="ytMusic"
+src="https://www.youtube.com/embed/wt0haVnorBo?enablejsapi=1&loop=1&playlist=wt0haVnorBo"
+allow="autoplay"
+style="width:0;height:0;border:0;visibility:hidden;">
+</iframe>
+
 <!-- PAGE 1 -->
 <div class="page active">
   <div class="card">
     <h1>Hi Shrija ✨</h1>
     <p>
-      This is not just a page.<br>
-      It’s a tiny Christmas world.<br><br>
-      Made slowly.<br>
-      With care.
+      This is a small Christmas world.<br>
+      Cute. Soft. Special.<br><br>
+      Made with care.
     </p>
-    <button onclick="next()">Enter 🎄</button>
+    <button onclick="startExperience()">Enter 🎄</button>
   </div>
 </div>
 
@@ -147,8 +153,7 @@ button:hover{transform:scale(1.08);}
     <p>
       Snow keeps falling.<br>
       Stars keep glowing.<br><br>
-      Some moments don’t need words.<br>
-      They just feel nice.
+      Some moments just feel nice.
     </p>
     <button onclick="next()">Next ✨</button>
   </div>
@@ -159,9 +164,9 @@ button:hover{transform:scale(1.08);}
   <div class="card">
     <p>
       Talking to you feels simple.<br><br>
-      No rush.<br>
-      No pressure.<br>
-      Just calm.
+      Calm.<br>
+      Easy.<br>
+      Natural.
     </p>
     <button onclick="next()">Continue 💫</button>
   </div>
@@ -171,12 +176,12 @@ button:hover{transform:scale(1.08);}
 <div class="page">
   <div class="card">
     <p>
-      This isn’t something dramatic.<br><br>
+      Nothing dramatic.<br><br>
       Just a gentle thought,<br>
       placed here,<br>
       on Christmas.
     </p>
-    <button onclick="next()">Almost there 🎁</button>
+    <button onclick="next()">Almost 🎁</button>
   </div>
 </div>
 
@@ -186,7 +191,7 @@ button:hover{transform:scale(1.08);}
     <h1 class="heartbeat">Merry Christmas 🎄</h1>
     <p>
       I hope this made you smile.<br><br>
-      Even if just a little.
+      Even a little.
     </p>
   </div>
 </div>
@@ -194,14 +199,29 @@ button:hover{transform:scale(1.08);}
 <script>
 let index=0;
 const pages=document.querySelectorAll(".page");
+
 function next(){
   pages[index].classList.remove("active");
   index++;
   if(index<pages.length) pages[index].classList.add("active");
 }
 
+/* MUSIC */
+function playMusic(){
+  const iframe = document.getElementById("ytMusic");
+  iframe.contentWindow.postMessage(
+    '{"event":"command","func":"playVideo","args":""}',
+    "*"
+  );
+}
+
+function startExperience(){
+  playMusic();
+  next();
+}
+
 /* stars */
-for(let i=0;i<60;i++){
+for(let i=0;i<70;i++){
   const s=document.createElement("div");
   s.className="star";
   s.style.left=Math.random()*100+"vw";
@@ -219,10 +239,10 @@ setInterval(()=>{
   sn.style.animationDuration=Math.random()*4+4+"s";
   document.body.appendChild(sn);
   setTimeout(()=>sn.remove(),8000);
-},200);
+},180);
 
 /* cute floating items */
-const cuteThings=["💗","🎄","✨","🧸","🎁","🌸"];
+const cuteThings=["💗","🎄","✨","🧸","🎁","🌸","💫"];
 setInterval(()=>{
   const c=document.createElement("div");
   c.className="cute";
@@ -232,7 +252,7 @@ setInterval(()=>{
   c.style.animationDuration=Math.random()*6+6+"s";
   document.body.appendChild(c);
   setTimeout(()=>c.remove(),9000);
-},500);
+},400);
 </script>
 
 </body>
