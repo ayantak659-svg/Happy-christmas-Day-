@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Christmas for Shrija</title>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Pacifico&display=swap');
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Pacifico&display=swap" rel="stylesheet">
 
+<style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
@@ -50,7 +50,7 @@ body{
 
 h1{
   font-family:'Pacifico',cursive;
-  font-size:44px;
+  font-size:42px;
   color:#ffd6f6;
   text-shadow:0 0 25px rgba(255,150,220,0.9);
   margin-bottom:18px;
@@ -105,7 +105,7 @@ button:active{transform:scale(0.96);}
 
 <body>
 
-<!-- YOUTUBE PLAYER -->
+<!-- YOUTUBE MUSIC -->
 <div id="player" style="width:0;height:0;overflow:hidden;"></div>
 
 <!-- PAGE 1 -->
@@ -114,7 +114,7 @@ button:active{transform:scale(0.96);}
     <h1>Hi Shrija ✨</h1>
     <p>
       This is a small Christmas world.<br>
-      Cute, calm and special.
+      Calm. Cute. Thoughtful.
     </p>
     <button onclick="start()">Enter 🎄</button>
   </div>
@@ -151,6 +151,19 @@ button:active{transform:scale(0.96);}
     <p>
       I hope this made you smile.
     </p>
+    <button onclick="next()">One last thing ✨</button>
+  </div>
+</div>
+
+<!-- FINAL SURPRISE -->
+<div class="page">
+  <div class="card">
+    <h1>✨</h1>
+    <p>
+      Some things don’t need big words.<br><br>
+      Just a moment.<br>
+      Just a smile.
+    </p>
   </div>
 </div>
 
@@ -175,11 +188,21 @@ function onYouTubeIframeAPIReady(){
   });
 }
 
+/* start + soft fade-in */
 function start(){
   if(player){
     player.unMute();
-    player.setVolume(40);
+    player.setVolume(0);
     player.playVideo();
+
+    let vol=0;
+    const fade=setInterval(()=>{
+      if(vol>=40) clearInterval(fade);
+      else{
+        vol++;
+        player.setVolume(vol);
+      }
+    },120);
   }
   next();
 }
@@ -203,8 +226,8 @@ setInterval(()=>{
   setTimeout(()=>s.remove(),8000);
 },200);
 
-/* floating cute */
-const icons=['💗','✨','🎄','🧸','🎁'];
+/* floating cute icons */
+const icons=['💗','✨','🎄','🧸','🎁','🌙','⭐','❄️'];
 setInterval(()=>{
   const f=document.createElement('div');
   f.className='float';
@@ -215,7 +238,21 @@ setInterval(()=>{
   document.body.appendChild(f);
   setTimeout(()=>f.remove(),9000);
 },500);
+
+/* sparkle on tap */
+document.addEventListener('click',e=>{
+  const s=document.createElement('div');
+  s.innerHTML='✨';
+  s.style.position='fixed';
+  s.style.left=e.clientX+'px';
+  s.style.top=e.clientY+'px';
+  s.style.fontSize='22px';
+  s.style.pointerEvents='none';
+  s.style.animation='fade 1s ease forwards';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),1000);
+});
 </script>
 
 </body>
-</html>  
+</html>
