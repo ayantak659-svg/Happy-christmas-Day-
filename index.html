@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Shrija 🎄</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #1b2735, #090a0f);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+/* Sections (feel like pages) */
+section {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 25px;
+}
+
+section.active {
+  display: flex;
+  animation: fadeIn 1s ease;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  padding: 35px;
+  border-radius: 24px;
+  max-width: 420px;
+  box-shadow: 0 0 40px rgba(255,255,255,0.15);
+}
+
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 46px;
+  color: #ffd6e8;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(255,120,170,0.8);
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+button {
+  margin-top: 25px;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg,#ff6f91,#ff8fab);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(255,120,170,0.8);
+}
+
+button:hover { transform: scale(1.08); }
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity:0; transform: translateY(25px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* Snow */
+.snow {
+  position: fixed;
+  top: -10px;
+  font-size: 14px;
+  animation: fall linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+/* Floating cute things */
+.float {
+  position: fixed;
+  bottom: -20px;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<section class="active">
+  <div class="card">
+    <h1>Hi Shrija</h1>
+    <p>
+      This isn’t a big thing.<br>
+      Just something… thoughtfully made.
+    </p>
+    <button onclick="nextPage()">Continue</button>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section>
+  <div class="card">
+    <p>
+      It’s Christmas 🎄<br><br>
+      And I wanted this to feel<br>
+      a little warm… and a little cute.
+    </p>
+    <button onclick="nextPage()">Continue</button>
+  </div>
+</section>
+
+<!-- PAGE 3 -->
+<section>
+  <div class="card">
+    <p>
+      I like how easy it is to talk to you.<br><br>
+      I like that things feel simple.<br>
+      And calm.
+    </p>
+    <button onclick="nextPage()">Continue</button>
+  </div>
+</section>
+
+<!-- PAGE 4 -->
+<section>
+  <div class="card">
+    <p>
+      No pressure.<br>
+      No heavy feelings.<br><br>
+      Just a small Christmas moment ✨
+    </p>
+    <button onclick="nextPage()">Final</button>
+  </div>
+</section>
+
+<!-- PAGE 5 -->
+<section>
+  <div class="card">
+    <h1>Merry Christmas 🎄</h1>
+    <p>
+      Hope this made you smile.<br><br>
+      — Shrija
+    </p>
+  </div>
+</section>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll("section");
+
+function nextPage() {
+  pages[current].classList.remove("active");
+  current++;
+  if (current < pages.length) pages[current].classList.add("active");
+}
+
+/* Snow */
+function snow() {
+  const s = document.createElement("div");
+  s.className = "snow";
+  s.innerHTML = "❄";
+  s.style.left = Math.random() * 100 + "vw";
+  s.style.animationDuration = Math.random() * 3 + 3 + "s";
+  document.body.appendChild(s);
+  setTimeout(() => s.remove(), 6000);
+}
+setInterval(snow, 220);
+
+/* Cute floating items */
+const cute = ["✨","🎁","💗","⭐"];
+function floatCute() {
+  const f = document.createElement("div");
+  f.className = "float";
+  f.innerHTML = cute[Math.floor(Math.random()*cute.length)];
+  f.style.left = Math.random() * 100 + "vw";
+  f.style.fontSize = Math.random()*10 + 18 + "px";
+  f.style.animationDuration = Math.random()*4 + 4 + "s";
+  document.body.appendChild(f);
+  setTimeout(()=>f.remove(),6000);
+}
+setInterval(floatCute, 600);
+</script>
+
+</body>
+</html>
