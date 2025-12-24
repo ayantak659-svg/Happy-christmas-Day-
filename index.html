@@ -3,107 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Shrija 🎄</title>
+<title>A Small Christmas Moment</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&family=Great+Vibes&display=swap');
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-  height: 100vh;
-  background: radial-gradient(circle at top, #1b2735, #090a0f);
-  overflow: hidden;
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
+  height:100vh;
+  background: radial-gradient(circle at top, #1b2735, #05060a);
+  overflow:hidden;
+  font-family:'Poppins', sans-serif;
+  color:#fff;
 }
 
-/* Sections (feel like pages) */
-section {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 25px;
+/* stars */
+.star {
+  position:fixed;
+  width:2px;
+  height:2px;
+  background:white;
+  opacity:0.6;
+  animation: twinkle 4s infinite ease-in-out;
 }
 
-section.active {
-  display: flex;
-  animation: fadeIn 1s ease;
+@keyframes twinkle {
+  0%,100% { opacity:0.2; }
+  50% { opacity:0.8; }
 }
 
-.card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  padding: 35px;
-  border-radius: 24px;
-  max-width: 420px;
-  box-shadow: 0 0 40px rgba(255,255,255,0.15);
-}
-
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 46px;
-  color: #ffd6e8;
-  margin-bottom: 15px;
-  text-shadow: 0 0 20px rgba(255,120,170,0.8);
-}
-
-p {
-  font-size: 16px;
-  line-height: 1.7;
-  opacity: 0.95;
-}
-
-button {
-  margin-top: 25px;
-  padding: 12px 28px;
-  border: none;
-  border-radius: 30px;
-  background: linear-gradient(135deg,#ff6f91,#ff8fab);
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-  box-shadow: 0 0 20px rgba(255,120,170,0.8);
-}
-
-button:hover { transform: scale(1.08); }
-
-/* Animations */
-@keyframes fadeIn {
-  from { opacity:0; transform: translateY(25px); }
-  to { opacity:1; transform: translateY(0); }
-}
-
-/* Snow */
+/* snow */
 .snow {
-  position: fixed;
-  top: -10px;
-  font-size: 14px;
+  position:fixed;
+  top:-10px;
+  font-size:14px;
   animation: fall linear infinite;
-  opacity: 0.8;
+  opacity:0.7;
 }
 
 @keyframes fall {
   to { transform: translateY(110vh); }
 }
 
-/* Floating cute things */
+/* floating icons */
 .float {
-  position: fixed;
-  bottom: -20px;
-  animation: floatUp linear infinite;
+  position:fixed;
+  bottom:-20px;
+  animation: rise linear infinite;
+  opacity:0.9;
 }
 
-@keyframes floatUp {
+@keyframes rise {
   to {
     transform: translateY(-120vh) rotate(360deg);
-    opacity: 0;
+    opacity:0;
   }
 }
+
+/* pages */
+section {
+  position:absolute;
+  width:100%;
+  height:100vh;
+  display:none;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
+  text-align:center;
+}
+
+section.active {
+  display:flex;
+  animation: fade 1.2s ease;
+}
+
+@keyframes fade {
+  from { opacity:0; transform: translateY(20px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(14px);
+  padding:38px;
+  border-radius:26px;
+  max-width:420px;
+  box-shadow:0 0 45px rgba(255,255,255,0.12);
+}
+
+h1 {
+  font-family:'Great Vibes', cursive;
+  font-size:48px;
+  color:#ffd6e8;
+  text-shadow:0 0 20px rgba(255,120,170,0.7);
+  margin-bottom:18px;
+}
+
+p {
+  font-size:16px;
+  line-height:1.8;
+  opacity:0.95;
+}
+
+button {
+  margin-top:28px;
+  padding:12px 30px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff6f91,#ff8fab);
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(255,120,170,0.7);
+}
+
+button:hover { transform: scale(1.06); }
 </style>
 </head>
 
@@ -114,10 +129,12 @@ button:hover { transform: scale(1.08); }
   <div class="card">
     <h1>Hi Shrija</h1>
     <p>
-      This isn’t a big thing.<br>
-      Just something… thoughtfully made.
+      This isn’t anything big.<br>
+      And it’s not meant to be.<br><br>
+      Just… a small moment,<br>
+      made with care.
     </p>
-    <button onclick="nextPage()">Continue</button>
+    <button onclick="next()">Continue</button>
   </div>
 </section>
 
@@ -125,11 +142,12 @@ button:hover { transform: scale(1.08); }
 <section>
   <div class="card">
     <p>
-      It’s Christmas 🎄<br><br>
-      And I wanted this to feel<br>
-      a little warm… and a little cute.
+      Christmas has a quiet side.<br><br>
+      Soft lights.<br>
+      Slow snow.<br>
+      Moments that don’t need noise.
     </p>
-    <button onclick="nextPage()">Continue</button>
+    <button onclick="next()">Continue</button>
   </div>
 </section>
 
@@ -137,11 +155,13 @@ button:hover { transform: scale(1.08); }
 <section>
   <div class="card">
     <p>
-      I like how easy it is to talk to you.<br><br>
-      I like that things feel simple.<br>
-      And calm.
+      I like how talking to you<br>
+      feels natural.<br><br>
+      No pretending.<br>
+      No pressure.<br>
+      Just easy.
     </p>
-    <button onclick="nextPage()">Continue</button>
+    <button onclick="next()">Continue</button>
   </div>
 </section>
 
@@ -149,61 +169,70 @@ button:hover { transform: scale(1.08); }
 <section>
   <div class="card">
     <p>
-      No pressure.<br>
-      No heavy feelings.<br><br>
-      Just a small Christmas moment ✨
+      This isn’t a promise.<br>
+      Or a statement.<br><br>
+      Just a thought,<br>
+      placed gently.
     </p>
-    <button onclick="nextPage()">Final</button>
+    <button onclick="next()">One last thing</button>
   </div>
 </section>
 
 <!-- PAGE 5 -->
 <section>
   <div class="card">
-    <h1>Merry Christmas 🎄</h1>
+    <h1>Merry Christmas</h1>
     <p>
-      Hope this made you smile.<br><br>
-      — Shrija
+      I hope this stayed with you<br>
+      for a moment longer than usual.<br><br>
+      — Shrija 🎄
     </p>
   </div>
 </section>
 
 <script>
-let current = 0;
-const pages = document.querySelectorAll("section");
-
-function nextPage() {
-  pages[current].classList.remove("active");
-  current++;
-  if (current < pages.length) pages[current].classList.add("active");
+let i=0;
+const pages=document.querySelectorAll("section");
+function next(){
+  pages[i].classList.remove("active");
+  i++;
+  if(i<pages.length) pages[i].classList.add("active");
 }
 
-/* Snow */
-function snow() {
-  const s = document.createElement("div");
-  s.className = "snow";
-  s.innerHTML = "❄";
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.animationDuration = Math.random() * 3 + 3 + "s";
+/* stars */
+for(let s=0;s<40;s++){
+  const star=document.createElement("div");
+  star.className="star";
+  star.style.left=Math.random()*100+"vw";
+  star.style.top=Math.random()*100+"vh";
+  star.style.animationDelay=Math.random()*4+"s";
+  document.body.appendChild(star);
+}
+
+/* snow */
+setInterval(()=>{
+  const s=document.createElement("div");
+  s.className="snow";
+  s.innerHTML="❄";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=Math.random()*4+4+"s";
   document.body.appendChild(s);
-  setTimeout(() => s.remove(), 6000);
-}
-setInterval(snow, 220);
+  setTimeout(()=>s.remove(),7000);
+},250);
 
-/* Cute floating items */
-const cute = ["✨","🎁","💗","⭐"];
-function floatCute() {
-  const f = document.createElement("div");
-  f.className = "float";
-  f.innerHTML = cute[Math.floor(Math.random()*cute.length)];
-  f.style.left = Math.random() * 100 + "vw";
-  f.style.fontSize = Math.random()*10 + 18 + "px";
-  f.style.animationDuration = Math.random()*4 + 4 + "s";
+/* rare cute float */
+const icons=["✨","🎁","💗"];
+setInterval(()=>{
+  const f=document.createElement("div");
+  f.className="float";
+  f.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+  f.style.left=Math.random()*100+"vw";
+  f.style.fontSize=Math.random()*10+20+"px";
+  f.style.animationDuration=Math.random()*5+6+"s";
   document.body.appendChild(f);
-  setTimeout(()=>f.remove(),6000);
-}
-setInterval(floatCute, 600);
+  setTimeout(()=>f.remove(),8000);
+},1200);
 </script>
 
 </body>
-</html>
+  </html> 
